@@ -12,6 +12,27 @@
 import _ from 'lodash';
 import Thing from './thing.model';
 
+
+var Yelp = require('yelp');
+
+var yelp = new Yelp({
+  consumer_key: 'te2R-GbQUaayysqlFq1Mnw',
+  consumer_secret: '9nKFi3_Hb_oQAzXtYfQWRvEegUg',
+  token: 'MQCvpMHTl3hwxpEmkrLCJJzeIjdHvuhu',
+  token_secret: '53NEcA7fc9r6YhFfIhzRGfMojAA',
+});
+
+export function getRestaurants(req, res) {
+  yelp.search({ term: 'food', location: 'Montreal' })
+    .then(function (data) {
+      var businesses = [];
+      res.status(200).json(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+}
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -65,6 +86,8 @@ export function index(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+
 
 // Gets a single Thing from the DB
 export function show(req, res) {
