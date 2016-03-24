@@ -6,12 +6,12 @@ class MainController {
 
   constructor($http) {
     this.$http = $http;
-    this.awesomeThings = [];
+    this.restaurants = [];
   }
 
   $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
+    this.$http.get('/api/things/restaurant').then(response => {
+      this.restaurants = response.data.businesses;
     });
   }
 
