@@ -1,37 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/things              ->  index
- * POST    /api/things              ->  create
- * GET     /api/things/:id          ->  show
- * PUT     /api/things/:id          ->  update
- * DELETE  /api/things/:id          ->  destroy
+ * GET     /api/foodmood              ->  index
+ * POST    /api/foodmood              ->  create
+ * GET     /api/foodmood/:id          ->  show
+ * PUT     /api/foodmood/:id          ->  update
+ * DELETE  /api/foodmood/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import Thing from './thing.model';
-
-
-var Yelp = require('yelp');
-
-var yelp = new Yelp({
-  consumer_key: 'te2R-GbQUaayysqlFq1Mnw',
-  consumer_secret: '9nKFi3_Hb_oQAzXtYfQWRvEegUg',
-  token: 'MQCvpMHTl3hwxpEmkrLCJJzeIjdHvuhu',
-  token_secret: '53NEcA7fc9r6YhFfIhzRGfMojAA',
-});
-
-export function getRestaurants(req, res) {
-  yelp.search({ term: 'food', location: 'Montreal' })
-    .then(function (data) {
-      var businesses = [];
-      res.status(200).json(data);
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
-}
+import Foodmood from './foodmood.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -80,45 +59,43 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Things
+// Gets a list of Foodmoods
 export function index(req, res) {
-  return Thing.find().exec()
+  return Foodmood.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-
-
-// Gets a single Thing from the DB
+// Gets a single Foodmood from the DB
 export function show(req, res) {
-  return Thing.findById(req.params.id).exec()
+  return Foodmood.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Thing in the DB
+// Creates a new Foodmood in the DB
 export function create(req, res) {
-  return Thing.create(req.body)
+  return Foodmood.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Thing in the DB
+// Updates an existing Foodmood in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Thing.findById(req.params.id).exec()
+  return Foodmood.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Thing from the DB
+// Deletes a Foodmood from the DB
 export function destroy(req, res) {
-  return Thing.findById(req.params.id).exec()
+  return Foodmood.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
