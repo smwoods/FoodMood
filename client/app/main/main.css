@@ -1,32 +1,124 @@
-#banner {
-  border-bottom: none;
-  margin-top: -20px;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
 }
 
-.hero-unit {
-  position: relative;
-  padding: 30px 15px;
-  color: #F5F5F5;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #4393B9;
+.navbar {
+  margin-bottom: 0 !important;
 }
 
 .navbar-text {
   margin-left: 15px;
 }
 
-.search-box {
-  padding-bottom: 50px;
+.main-page-wrapper {
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  background-color: #2c3e50;
+  height: 90vh;
+  min-height: 500px;
+  min-width: 280px;
 }
 
-.restaurant-listing {
-  border: 0.5px solid gray;
-  margin: 2px;
+.dashboard-container {
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 960px;
+}
+
+.foodmood-list {
+  background-color: #ecf0f1;
+  padding: 0;
+}
+
+.new-foodmood-btn {
+  height: 50px;
+  width: 100%;
+  background-color: #f39c12;
+  color: white;
+  border-radius: 0;
+}
+
+.restaurant-view {
+  background-color: white;
+}
+
+.new-foodmood-view {
+  background-color: white;
+}
+
+.tag-item {
+  display: inline-block;
+  background-color: #bdc3c7;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 8px 12px 8px 12px;
+}
+
+
+@media(max-width:767px) {
+  .dashboard-container {
+    position: relative;
+  }
+
+  .foodmood-list {
+    height: 120px;
+  }
+
+  .restaurant-view {
+    height: calc(100% - 120px);
+  }
+
+  .new-foodmood-view {
+    height: 100%;
+  }
+}
+@media(min-width:768px) {
+
+  .dashboard-container {
+    
+  }
+
+  .foodmood-list {
+    height: 100%;
+  }
+
+  .restaurant-view {
+    height: 100%;
+  }
+
+  .new-foodmood-view {
+    height: 100%;
+  }
+
+}
+
+@media(min-width:992px) {
+  .foodmood-list {
+    
+  }
+
+  .restaurant-view {
+    
+  }
+
+}
+
+@media(min-width:1200px) {
+  .foodmood-list {
+    
+  }
+
+  .restaurant-view {
+    
+  }
+
 }

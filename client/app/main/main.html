@@ -1,13 +1,48 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Food Mood</h1>
-   <!--  <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman"> -->
-  </div>
-</header>
+<div class="container-fluid main-page-wrapper">
+  <div class="dashboard-container row">
+    <div class="col-sm-3 foodmood-list">
+      <div class="new-foodmood-btn btn" ng-click="$ctrl.switchViews()">
+        New FoodMood
+      </div>
+      <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain"></div>
+    <div class="col-sm-9 new-foodmood-view" ng-hide="$ctrl.viewMain">
+      <h2>New Food Mood</h2>
+      <form>
+        <fieldset class="form-group">
+          <label for="formGroupExampleInput">Mood title</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="exampleTextarea">Description</label>
+          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="formGroupExampleInput">Location</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="formGroupExampleInput">Tags</label>
+          <br>
+          <div ng-repeat="tag in $ctrl.tagList" class="tag-item btn">
+            <span>{{tag}}</span>
+            <span>&#43;</span>
+          </div>
+        </fieldset>
+        <button type="button" class="btn btn-info btn-lg">Feed me!</button>
 
-<div class="container">
-  <div class="search-box">
+      </form>
+    </div>
+  </div>
+</div>
+<!--   <div class="search-box">
     <h1 class="page-header">Search for food near you:</h1>
     <form>
       <fieldset class="form-group">
@@ -29,7 +64,7 @@
         <img src="{{restaurant.rating_img_url_large}}">
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
+
 
 

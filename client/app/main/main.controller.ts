@@ -10,7 +10,8 @@ class MainController {
     this.searchTerm = 'pizza';
     this.searchPlace = 'Boston';
     this.restaurants = [];
-
+    this.viewMain = true;
+    this.tagList = ['American', 'Italian', 'cheap'];
   }
 
   $onInit() {
@@ -19,24 +20,20 @@ class MainController {
     // });
   }
 
-  search() {
-    var url = '/api/yelp/search/' + this.searchTerm + '/' + this.searchPlace;
-    this.$http.get(url).then(response => {
-      this.restaurants = response.data;
-    });
+  switchViews() {
+    console.log("in here");
+    this.viewMain = !this.viewMain;
   }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
+  // search() {
+  //   var url = '/api/yelp/search/' + this.searchTerm + '/' + this.searchPlace;
+  //   this.$http.get(url).then(response => {
+  //     this.restaurants = response.data;
+  //   });
+  // }
 }
+
+
 
 angular.module('foodmoodApp')
   .component('main', {
