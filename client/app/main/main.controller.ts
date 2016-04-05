@@ -37,14 +37,23 @@ class MainController {
     .then(response => {
       console.log(response.data);
       this.moods.push(response.data);
-      this.currentMood = this.moods[0];
-      this.switchViews();
+      this.currentMood = this.moods[this.moods.length - 1];
+      this.getRestaurant();
+      this.switchViews();     
     });
   }
 
-
+  getRestaurant() {
+    var yelpid = this.currentMood.playlist[this.currentMood.ind]
+   return this.$http.get('/api/foodmood/yelpid/'+yelpid)
+    .then(response => {
+      console.log(response.data);   
+      this.currentRestaurant = response.data;
+    });
+  }
 
 }
+
 
 
 

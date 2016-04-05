@@ -94,6 +94,16 @@ export function create(req, res) {
   
 }
 
+ export function getRestaurantDetails(req, res){
+  var yelpid = req.params.yelpid;
+  console.log(req.params);
+   yelpService.getRestaurantByYelpID(yelpid)
+   .then(function(data) {
+    return res.status(200).json(data);    // send back to front end
+  })
+
+ }
+
 // Updates an existing Foodmood in the DB
 export function update(req, res) {
   if (req.body._id) {
