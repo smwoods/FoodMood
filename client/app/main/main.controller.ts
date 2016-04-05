@@ -7,30 +7,43 @@ class MainController {
 
   constructor($http) {
     this.$http = $http;
-    this.searchTerm = 'pizza';
-    this.searchPlace = 'Boston';
-    this.restaurants = [];
     this.viewMain = true;
-    this.tagList = ['American', 'Italian', 'cheap'];
+    this.moods = [];
+    this.currentRestaurant = null;
+    this.currentMood = null;
   }
 
   $onInit() {
-    // this.$http.get('/api/yelp/restaurant').then(response => {
-    //   this.restaurants = response.data.businesses;
-    // });
+    this.$http.get('/api/foodmood').then(response => {
+      this.moods = response.data;
+      console.log(this.moods[0]);
+    });
   }
 
   switchViews() {
-    console.log("in here");
     this.viewMain = !this.viewMain;
   }
 
-  // search() {
-  //   var url = '/api/yelp/search/' + this.searchTerm + '/' + this.searchPlace;
-  //   this.$http.get(url).then(response => {
-  //     this.restaurants = response.data;
-  //   });
-  // }
+  setFoodmood(mood) {
+    for (var i=0; i < this.moods.length; i++) {
+      if (this.moods[i]._id == mood._id) {
+        this.currentMood = this.moods[i];
+      }
+    }
+  }
+
+  createFoodmood() {
+    return this.$http.post('/api/foodmood', this.mood)
+    .then(response => {
+      console.log(response.data);
+      this.moods.push(response.data);
+      this.currentMood = this.moods[0];
+      this.switchViews();
+    });
+  }
+
+
+
 }
 
 

@@ -12,6 +12,8 @@
 import _ from 'lodash';
 import Foodmood from './foodmood.model';
 
+var yelpService = require('../../services/yelp.service');
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -76,9 +78,19 @@ export function show(req, res) {
 
 // Creates a new Foodmood in the DB
 export function create(req, res) {
-  return Foodmood.create(req.body)
+  var params = {
+    terms: req.body.tags,
+    location: req.body.location
+  }
+  yelpService.search(params)
+  .then(function(data) {
+    var playlist = data.businesses.map(function(rest) {return rest.id;});
+    req.body.playlist = playlist;
+    return Foodmood.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+  })
+  
 }
 
 // Updates an existing Foodmood in the DB

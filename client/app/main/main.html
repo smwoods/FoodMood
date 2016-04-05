@@ -4,41 +4,49 @@
       <div class="new-foodmood-btn btn" ng-click="$ctrl.switchViews()">
         New FoodMood
       </div>
-      <select class="form-control">
+      <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class="mood-item">
+        {{mood.title}}
+      </div>
+      <!-- <select class="form-control">
         <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
         <option>5</option>
-      </select>
+      </select> -->
     </div>
-    <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain"></div>
+    <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain">
+      <h2>{{$ctrl.currentMood.title}}</h2>
+      <p>{{$ctrl.currentMood.playlist}}</p>
+    </div>
     <div class="col-sm-9 new-foodmood-view" ng-hide="$ctrl.viewMain">
       <h2>New Food Mood</h2>
       <form>
         <fieldset class="form-group">
-          <label for="formGroupExampleInput">Mood title</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+          <label for="mood-title">Mood title</label>
+          <input ng-model="$ctrl.mood.title" type="text" class="form-control" id="mood-title">
         </fieldset>
         <fieldset class="form-group">
-          <label for="exampleTextarea">Description</label>
-          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+          <label for="mmood-description">Description</label>
+          <textarea ng-model="$ctrl.mood.description" class="form-control" id="mood-description" rows="3"></textarea>
         </fieldset>
         <fieldset class="form-group">
-          <label for="formGroupExampleInput">Location</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+          <label for="mood-location">Location</label>
+          <input ng-model="$ctrl.mood.location" type="text" class="form-control" id="mood-location" placeholder="Boston">
         </fieldset>
         <fieldset class="form-group">
-          <label for="formGroupExampleInput">Tags</label>
-          <br>
+          <label for="mood-tags">Tags</label>
+          <input ng-model="$ctrl.mood.tags" type="text" class="form-control" id="mood-tags">
+          <!-- <br>
           <div ng-repeat="tag in $ctrl.tagList" class="tag-item btn">
             <span>{{tag}}</span>
             <span>&#43;</span>
-          </div>
+          </div> -->
         </fieldset>
-        <button type="button" class="btn btn-info btn-lg">Feed me!</button>
+        <button ng-click="$ctrl.createFoodmood()" type="button" class="btn btn-info btn-lg">Feed me!</button>
 
       </form>
+      {{$ctrl.mood}}
     </div>
   </div>
 </div>
