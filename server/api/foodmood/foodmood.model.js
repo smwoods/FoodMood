@@ -7,7 +7,8 @@ var FoodmoodSchema = new mongoose.Schema({
   description: String,
   location: String,
   tags: [String],
-  playlist: [String]
+  playlist: [String],
+  ind: Number
 });
 
 export default mongoose.model('Foodmood', FoodmoodSchema);

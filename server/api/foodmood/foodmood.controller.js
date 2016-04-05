@@ -86,6 +86,7 @@ export function create(req, res) {
   .then(function(data) {
     var playlist = data.businesses.map(function(rest) {return rest.id;});
     req.body.playlist = playlist;
+    req.body.ind = 0;
     return Foodmood.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
