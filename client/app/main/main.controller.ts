@@ -38,14 +38,14 @@ class MainController {
       console.log(response.data);
       this.moods.push(response.data);
       this.currentMood = this.moods[this.moods.length - 1];
-      this.getRestaurant();
+      this.getNextRestaurant();
       this.switchViews();     
     });
   }
 
-  getRestaurant() {
-    var yelpid = this.currentMood.playlist[this.currentMood.ind]
-   return this.$http.get('/api/foodmood/yelpid/'+yelpid)
+  getNextRestaurant() {
+    var moodId = this.currentMood._id;
+    return this.$http.get('/api/foodmood/'+moodId+'/next')
     .then(response => {
       console.log(response.data);   
       this.currentRestaurant = response.data;

@@ -79,30 +79,36 @@ export function show(req, res) {
 // Creates a new Foodmood in the DB
 export function create(req, res) {
   var params = {
-    terms: req.body.tags,
+    term: req.body.tags,
     location: req.body.location
   }
   yelpService.search(params)
   .then(function(data) {
-    var playlist = data.businesses.map(function(rest) {return rest.id;});
+    var playlist = data.businesses.map(function(it) {return it.id;});
     req.body.playlist = playlist;
     req.body.ind = 0;
     return Foodmood.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
   })
-  
 }
 
- export function getRestaurantDetails(req, res){
-  var yelpid = req.params.yelpid;
-  console.log(req.params);
-   yelpService.getRestaurantByYelpID(yelpid)
-   .then(function(data) {
-    return res.status(200).json(data);    // send back to front end
-  })
+export function getNextRestaurant(req, res){
+  Foodmood.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(function(mood) {
+      var restaurantYelpId = mood.playlist[mood.ind];
+      mood.ind = (mood.ind + 1) % mood.playlist.length
+      mood.save();
+      yelpService.getRestaurantByYelpId(restaurantYelpId)
+      .then(function(data) {
+        return res.status(200).json(data);
+      })
+    })
+    .catch(handleError(res));
 
- }
+  
+}
 
 // Updates an existing Foodmood in the DB
 export function update(req, res) {

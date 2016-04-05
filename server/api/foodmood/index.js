@@ -7,7 +7,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
-router.get('/yelpid/:yelpid', controller.getRestaurantDetails);  
+router.get('/:id/next', controller.getNextRestaurant);  
     //
 router.post('/', controller.create);
 

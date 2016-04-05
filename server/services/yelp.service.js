@@ -15,6 +15,6 @@ export function search(params) {
   return yelp.search(params);
 }
 
-export function getRestaurantByYelpID(yelpId){
+export function getRestaurantByYelpId(yelpId){
   return yelp.business(yelpId);
 }
