@@ -27,7 +27,11 @@ class MainController {
   setFoodmood(mood) {
     for (var i=0; i < this.moods.length; i++) {
       if (this.moods[i]._id == mood._id) {
+        if (this.currentMood == this.moods[i]) {
+          return;
+        }
         this.currentMood = this.moods[i];
+        this.getNextRestaurant();
       }
     }
   }
