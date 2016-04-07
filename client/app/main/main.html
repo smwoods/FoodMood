@@ -16,6 +16,9 @@
       </select> -->
     </div>
     <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain">
+      <div class="control-bar">
+        <button ng-click="$ctrl.getNextRestaurant()" class="btn btn-large btn-warning">NEXT</button>
+      </div>
       <h2>{{$ctrl.currentRestaurant.name}}</h2>
       <p>{{$ctrl.currentRestaurant.phone}}</p>
     </div>
