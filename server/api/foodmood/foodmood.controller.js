@@ -99,11 +99,14 @@ export function getNextRestaurant(req, res){
     .then(function(mood) {
       var restaurantYelpId = mood.playlist[mood.ind];
       mood.ind = (mood.ind + 1) % mood.playlist.length
-      mood.save();
-      yelpService.getRestaurantByYelpId(restaurantYelpId)
-      .then(function(data) {
-        return res.status(200).json(data);
+      return mood.save()
+      .then(function() {
+        yelpService.getRestaurantByYelpId(restaurantYelpId)
+        .then(function(data) {
+          return res.status(200).json(data);
+        })
       })
+      
     })
     .catch(handleError(res));
 
