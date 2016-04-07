@@ -18,6 +18,10 @@
     <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain">
       <h2>{{$ctrl.currentRestaurant.name}}</h2>
       <p>{{$ctrl.currentRestaurant.phone}}</p>
+      <p><img src="{{$ctrl.currentRestaurant.rating_img_url_large}}"></p>
+      <p>Phone : {{$ctrl.currentRestaurant.phone}}</p>
+      <p>Address : {{$ctrl.currentRestaurant.location["display_address"].toString()}}</p>    <!--location-->
+      <img src={{$ctrl.currentRestaurant.image_url}} alt="Photo" class="col-xs-2">
     </div>
     <div class="col-sm-9 new-foodmood-view" ng-hide="$ctrl.viewMain">
       <h2>New Food Mood</h2>
