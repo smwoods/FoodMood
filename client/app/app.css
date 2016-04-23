@@ -31,10 +31,82 @@
  * App-wide Styles
  */
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
 }
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100% 
+}
+
+.flex-fill {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.fill-page {
+  width: 100%;
+  height: calc(100vh - 51px);
+  margin-top: 51px;
+  position: relative;
+}
+
+.right-shadow {
+  -webkit-box-shadow: 1px 2px 2px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 1px 2px 2px 0px rgba(0,0,0,0.5);
+  box-shadow: 1px 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.bottom-shadow {
+  -webkit-box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.3);
+}
+
+.hidden {
+  display: hidden;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #000;
+}
+
+.arrow-down:hover {
+  border-top: 10px solid #00838f;
+  cursor: pointer;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #000;
+}
+
+.arrow-up:hover {
+  border-bottom: 10px solid #00838f;
+  cursor: pointer;
+}
+
 

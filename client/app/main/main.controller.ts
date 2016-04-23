@@ -5,18 +5,20 @@
 class MainController {
 
 
-  constructor($http) {
+  constructor($http, $state) {
     this.$http = $http;
+    this.$state = $state;
     this.viewMain = true;
     this.moods = [];
     this.currentRestaurant = null;
     this.currentMood = null;
+    this.dropExpanded = false;
   }
 
   $onInit() {
     this.$http.get('/api/foodmood').then(response => {
       this.moods = response.data;
-      console.log(this.moods[0]);
+      this.setFoodmood(this.moods[this.moods.length-1]);
     });
   }
 
@@ -32,28 +34,36 @@ class MainController {
         }
         this.currentMood = this.moods[i];
         this.getNextRestaurant();
+        if (this.dropExpanded) {
+          this.dropExpanded = false;
+        }
       }
     }
   }
 
   createFoodmood() {
-    return this.$http.post('/api/foodmood', this.mood)
-    .then(response => {
-      console.log(response.data);
-      this.moods.push(response.data);
-      this.currentMood = this.moods[this.moods.length - 1];
-      this.getNextRestaurant();
-      this.switchViews();     
-    });
+    this.$state.go('newmood');
   }
 
   getNextRestaurant() {
     var moodId = this.currentMood._id;
     return this.$http.get('/api/foodmood/'+moodId+'/next')
     .then(response => {
-      console.log(response.data);   
       this.currentRestaurant = response.data;
+      this.currentRestaurant.image = this.getOriginalImageUrl(this.currentRestaurant.image_url);
+      console.log(this.currentRestaurant);
     });
+  }
+
+  getOriginalImageUrl(url) {
+    var shortened = url.substring(0, url.lastIndexOf("/") + 1);
+    console.log(url, shortened);
+    return shortened + 'o.jpg'
+  }
+
+  toggleDropdown() {
+    console.log("Dropdown expanding");
+    this.dropExpanded = !this.dropExpanded;
   }
 
 }

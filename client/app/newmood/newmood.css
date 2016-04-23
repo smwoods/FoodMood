@@ -21,6 +21,7 @@ h1, h2, h3, h4 {
   padding: 0;
 /*  transition: 0.3s ease-in-out;
 */overflow-y: hidden;
+  overflow-x: hidden;
   z-index: 1000;
   display: flex;
   flex: 0 0 auto;
@@ -74,10 +75,6 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
-.dropdown-text {
-  margin: auto;
-}
-
 .dropdown-arrow {
   padding-top: 10px;
 }
@@ -98,35 +95,19 @@ h1, h2, h3, h4 {
   display: flex;
   flex: 1 1 auto;
   text-align: center;
-  margin-bottom: 90px;
 /*  position: absolute;
   bottom: 90px;*/
 }
 
-.main-restaurant-view .row > * {
-  padding: 5px;
+.main-restaurant-view > * {
+  padding: 10px;
 }
 
 .main-action-bar {
   height: 90px;
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
   background-color: #00838f;
-}
-
-.main-action-bar-container {
-  width: 250px;
-  margin: auto;
-}
-
-.main-action-bar-btn {
-  margin: 20px 10px;
-}
-
-.main-action-bar-btn-img {
-  height: 24px;
 }
 
 

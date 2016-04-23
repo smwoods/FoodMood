@@ -1,63 +1,53 @@
-<div class="container-fluid main-page-wrapper">
-  <div class="dashboard-container row">
-    <div class="col-sm-3 foodmood-list">
-      <div class="new-foodmood-btn btn" ng-click="$ctrl.switchViews()">
-        New FoodMood
+<div class="fill-page container-fluid">
+  <div class="row flex-col">
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl" ng-class="$ctrl.dropExpanded ? 'main-sidebar-mobile-expanded' : 'main-sidebar-mobile'">
+      <div class="row-fluid main-sidebar-mobile-row">
+        
+        <div class="main-sidebar-dropdown-item-selected flex-row">
+          <div class="dropdown-plus" ng-click="$ctrl.createFoodmood()">
+            <img class="dropdown-plus-img" src="assets/images/cross.png">
+          </div>
+          <div class="dropdown-text">
+            <h3>{{$ctrl.currentMood.title}}</h3>
+          </div>
+          <div class="dropdown-arrow">
+            <div class="arrow-down" ng-click="$ctrl.toggleDropdown()" ng-show="!$ctrl.dropExpanded"></div>
+            <div class="arrow-up" ng-click="$ctrl.toggleDropdown()" ng-show="$ctrl.dropExpanded"></div>
+          </div>
+        </div>
+        
+        <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class="main-sidebar-dropdown-item col-xs-12" ng-show="$ctrl.dropExpanded">
+          {{mood.title}}
+        </div>
+        
       </div>
-      <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class="mood-item">
+    </div>
+    <div class="main-sidebar hidden-xs col-sm-3">
+      <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class=" col-xs-12 main-sidebar-item">
         {{mood.title}}
       </div>
-      <!-- <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select> -->
     </div>
-    <div class="col-sm-9 restaurant-view" ng-show="$ctrl.viewMain">
-      <div class="control-bar">
-        <button ng-click="$ctrl.getNextRestaurant()" class="btn btn-large btn-warning">NEXT</button>
+    <div class="main-restaurant-view col-xs-12 col-sm-9 col-sm-offset-3">
+      <div class="row">
+        <h1 class="col-xs-12">{{$ctrl.currentRestaurant.name}}</h1>
+        <img class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5" src="{{$ctrl.currentRestaurant.rating_img_url_large}}">
+        <p class="col-xs-12">{{$ctrl.currentRestaurant.snippet_text}}</p>
+        <img class="col-xs-12" src="{{$ctrl.currentRestaurant.image}}">
       </div>
-      <h2>{{$ctrl.currentRestaurant.name}}</h2>
-      <p>{{$ctrl.currentRestaurant.phone}}</p>
-      <p><img src="{{$ctrl.currentRestaurant.rating_img_url_large}}"></p>
-      <p>Phone : {{$ctrl.currentRestaurant.phone}}</p>
-      <p>Address : {{$ctrl.currentRestaurant.location["display_address"].toString()}}</p>    <!--location-->
-      <img src={{$ctrl.currentRestaurant.image_url}} alt="Photo" class="col-xs-2">
-    </div>
-    <div class="col-sm-9 new-foodmood-view" ng-hide="$ctrl.viewMain">
-      <h2>New Food Mood</h2>
-      <form>
-        <fieldset class="form-group">
-          <label for="mood-title">Mood title</label>
-          <input ng-model="$ctrl.mood.title" type="text" class="form-control" id="mood-title">
-        </fieldset>
-        <fieldset class="form-group">
-          <label for="mmood-description">Description</label>
-          <textarea ng-model="$ctrl.mood.description" class="form-control" id="mood-description" rows="3"></textarea>
-        </fieldset>
-        <fieldset class="form-group">
-          <label for="mood-location">Location</label>
-          <input ng-model="$ctrl.mood.location" type="text" class="form-control" id="mood-location" placeholder="Boston">
-        </fieldset>
-        <fieldset class="form-group">
-          <label for="mood-tags">Tags</label>
-          <input ng-model="$ctrl.mood.tags" type="text" class="form-control" id="mood-tags">
-          <!-- <br>
-          <div ng-repeat="tag in $ctrl.tagList" class="tag-item btn">
-            <span>{{tag}}</span>
-            <span>&#43;</span>
-          </div> -->
-        </fieldset>
-        <button ng-click="$ctrl.createFoodmood()" type="button" class="btn btn-info btn-lg">Feed me!</button>
-
-      </form>
-      {{$ctrl.mood}}
+    </div>   
+  </div>
+  <div class="main-action-bar col-xs-12">
+    <div class="main-action-bar-container">
+      <button type="button" class="btn btn-warning btn-lg main-action-bar-btn">
+        <img class="main-action-bar-btn-img" src="assets/images/leftarrow.png">
+        Prev
+      </button>
+      <button type="button" ng-click="$ctrl.getNextRestaurant()" class="btn btn-warning btn-lg main-action-bar-btn">
+        Next
+        <img class="main-action-bar-btn-img" src="assets/images/rightarrow.png">
+      </button>        
     </div>
   </div>
+  
 </div>
-
-
-
 
