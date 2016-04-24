@@ -64,6 +64,16 @@ export function show(req, res, next) {
     .catch(err => next(err));
 }
 
+export function saveRestaurant(req, res) {
+  return User.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(function(user) {
+      user.saved_restaurants.push(req.body);
+    })
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 /**
  * Deletes a user
  * restriction: 'admin'

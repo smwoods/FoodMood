@@ -17,6 +17,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  saved_restaurants: [],
   password: String,
   provider: String,
   salt: String,
