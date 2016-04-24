@@ -16,6 +16,7 @@
           </div>
         </div>
         
+
         <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class="main-sidebar-dropdown-item col-xs-12" ng-show="$ctrl.dropExpanded">
           {{mood.title}}
         </div>
@@ -41,6 +42,10 @@
       <button type="button" class="btn btn-warning btn-lg main-action-bar-btn">
         <img class="main-action-bar-btn-img" src="assets/images/leftarrow.png">
         Prev
+      </button>
+      <button type="button" ng-click="$ctrl.saveRestaurant()" class="btn btn-warning btn-lg main-action-bar-btn">
+        Save
+        <img class="main-action-bar-btn-img" src="assets/images/star.svg">
       </button>
       <button type="button" ng-click="$ctrl.getNextRestaurant()" class="btn btn-warning btn-lg main-action-bar-btn">
         Next

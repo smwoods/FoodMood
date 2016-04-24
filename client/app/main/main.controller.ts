@@ -55,6 +55,10 @@ class MainController {
     });
   }
 
+  saveRestaurant() {
+     console.log("here");
+  }
+
   getOriginalImageUrl(url) {
     var shortened = url.substring(0, url.lastIndexOf("/") + 1);
     console.log(url, shortened);
