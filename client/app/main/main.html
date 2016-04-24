@@ -5,7 +5,7 @@
         
         <div class="main-sidebar-dropdown-item-selected flex-row">
           <div class="dropdown-plus" ng-click="$ctrl.createFoodmood()">
-            <img class="dropdown-plus-img" src="assets/images/cross.png">
+            <img class="dropdown-plus-img" src="assets/images/cross.png"> 
           </div>
           <div class="dropdown-text">
             <h3>{{$ctrl.currentMood.title}}</h3>
@@ -21,8 +21,13 @@
         </div>
         
       </div>
-    </div>
+     </div>
+
+
     <div class="main-sidebar hidden-xs col-sm-3">
+    <div class = "main-sidebar-plus" ng-click = "$ctrl.createFoodmood()">
+      <img class="main-sidebar-plus-img" src="assets/images/cross.png"> 
+    </div>
       <div ng-repeat="mood in $ctrl.moods" ng-click="$ctrl.setFoodmood(mood)" class=" col-xs-12 main-sidebar-item">
         {{mood.title}}
       </div>

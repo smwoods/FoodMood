@@ -13,8 +13,24 @@ h1, h2, h3, h4 {
   z-index: 1000;
 }
 
+.main-sidebar-plus{
+  width: 100%;
+  background-color:#F6F7EB;
+}
+.main-sidebar-plus:hover{
+  cursor:pointer;
+  background-color: #3F88C5;
+}
+
+.main-sidebar-plus-img{
+  margin: auto;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .main-sidebar-mobile-row {
-  width: 100%
+  width: 100%;
 }
 
 .main-sidebar-mobile {
@@ -26,6 +42,8 @@ h1, h2, h3, h4 {
   display: flex;
   flex: 0 0 auto;
 }
+
+
 
 .main-sidebar-mobile-expanded {
   background-color: #ECEFF1;
@@ -68,6 +86,7 @@ h1, h2, h3, h4 {
 .dropdown-plus-img {
   height: 28px;
 }
+
 
 .dropdown-plus-img:hover {
   opacity: 0.5;
