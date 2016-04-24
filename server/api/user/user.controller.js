@@ -19,6 +19,25 @@ function handleError(res, statusCode) {
   };
 }
 
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
+function respondWithResult(res, statusCode) {
+  statusCode = statusCode || 200;
+  return function(entity) {
+    if (entity) {
+      res.status(statusCode).json(entity);
+    }
+  };
+}
+
 /**
  * Get list of users
  * restriction: 'admin'
@@ -65,10 +84,13 @@ export function show(req, res, next) {
 }
 
 export function saveRestaurant(req, res) {
+  console.log(req.params.id);
+  console.log(req.body);
   return User.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(function(user) {
       user.saved_restaurants.push(req.body);
+      return user
     })
     .then(respondWithResult(res))
     .catch(handleError(res));

@@ -5,9 +5,10 @@
 class MainController {
 
 
-  constructor($http, $state) {
+  constructor($http, $state, Auth) {
     this.$http = $http;
     this.$state = $state;
+    this.Auth = Auth;
     this.viewMain = true;
     this.moods = [];
     this.currentRestaurant = null;
@@ -20,6 +21,8 @@ class MainController {
       this.moods = response.data;
       this.setFoodmood(this.moods[this.moods.length-1]);
     });
+    this.currentUser = this.Auth.getCurrentUser();
+    console.log(this.currentUser);
   }
 
   switchViews() {
@@ -56,7 +59,12 @@ class MainController {
   }
 
   saveRestaurant() {
-     console.log("here");
+    var userId = this.currentUser._id;
+    return this.$http.post('/api/users/'+userId+'/saverestaurant',
+       this.currentRestaurant)
+    .then(response => {
+      console.log(response);
+    });
   }
 
   getOriginalImageUrl(url) {
