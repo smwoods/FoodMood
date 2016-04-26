@@ -1,24 +1,26 @@
-<div class="col-xs-12 col-sm-8 col-sm-offset-2 fill-page">
-  <h2>New Food Mood</h2>
-  <form>
-    <fieldset class="form-group">
-      <label for="mood-title">Mood title</label>
-      <input ng-model="ctrl.mood.title" type="text" class="form-control" id="mood-title">
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="mmood-description">Description</label>
-      <textarea ng-model="ctrl.mood.description" class="form-control" id="mood-description" rows="3"></textarea>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="mood-location">Location</label>
-      <input ng-model="ctrl.mood.location" type="text" class="form-control" id="mood-location" placeholder="Boston">
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="mood-tags">Tags</label>
-      <input ng-model="ctrl.mood.tags" type="text" class="form-control" id="mood-tags">
-    </fieldset>
-    <button ng-click="ctrl.createFoodmood()" type="button" class="btn btn-info btn-lg">Feed me!</button>
+<div class="fill-page">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <h2>New Food Mood</h2>
+    <form>
+      <fieldset class="form-group">
+        <label for="mood-title">Mood title</label>
+        <input ng-model="ctrl.mood.title" type="text" class="form-control" id="mood-title">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="mmood-description">Description</label>
+        <textarea ng-model="ctrl.mood.description" class="form-control" id="mood-description" rows="3"></textarea>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="mood-location">Location</label>
+        <input ng-model="ctrl.mood.location" type="text" class="form-control" id="mood-location" placeholder="Boston">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="mood-tags">Tags</label>
+        <input ng-model="ctrl.mood.tags" type="text" class="form-control" id="mood-tags">
+      </fieldset>
+      <button ng-click="ctrl.createFoodmood()" type="button" class="btn btn-info btn-lg">Feed me!</button>
 
-  </form>
-  {{ctrl.mood}}
+    </form>
+    {{ctrl.mood}}
+  </div>
 </div>
