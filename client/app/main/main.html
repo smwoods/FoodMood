@@ -38,13 +38,13 @@
         <h1 class="col-xs-12">{{$ctrl.currentRestaurant.name}}</h1>
         <img class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5" src="{{$ctrl.currentRestaurant.rating_img_url_large}}">
         <p class="col-xs-12">{{$ctrl.currentRestaurant.snippet_text}}</p>
-        <img class="col-xs-12" src="{{$ctrl.currentRestaurant.image}}">
+        <img class="col-xs-12 col-sm-8 col-sm-offset-2" src="{{$ctrl.currentRestaurant.image}}">
       </div>
     </div>   
   </div>
   <div class="main-action-bar col-xs-12">
     <div class="main-action-bar-container">
-      <button type="button" ng-click="$ctrl.saveRestaurant()" class="btn btn-warning btn-lg main-action-bar-btn">
+      <button type="button" ng-show="$ctrl.Auth.isLoggedIn()" ng-click="$ctrl.saveRestaurant()" class="btn btn-warning btn-lg main-action-bar-btn">
         Save
         <img class="main-action-bar-btn-img" src="assets/images/star.svg">
       </button>

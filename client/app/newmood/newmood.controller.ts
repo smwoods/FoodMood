@@ -11,9 +11,6 @@ class NewMoodController {
     this.mood = null;
   }
 
-  $onInit() {
-  }
-
   createFoodmood() {
     console.log('fired');
     return this.$http.post('/api/foodmood', this.mood)

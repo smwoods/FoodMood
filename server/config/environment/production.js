@@ -19,6 +19,6 @@ module.exports = {
           process.env.MONGOHQ_URL ||
           process.env.OPENSHIFT_MONGODB_DB_URL +
           process.env.OPENSHIFT_APP_NAME ||
-          'mongodb://localhost/foodmood'
+          'mongodb://heroku_n8rhlp7m:tg0vqug7fhok3ejfu7ldssepp0@ds021701.mlab.com:21701/heroku_n8rhlp7m'
   }
 };

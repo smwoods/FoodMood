@@ -21,6 +21,8 @@
         "client/app/main/main.ts",
         "client/app/newmood/newmood.controller.ts",
         "client/app/newmood/newmood.ts",
+        "client/app/saved/saved.controller.ts",
+        "client/app/saved/saved.ts",
         "client/components/auth/auth.module.ts",
         "client/components/auth/auth.service.ts",
         "client/components/auth/interceptor.service.ts",

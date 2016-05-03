@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 var YelpHelper = require('yelp');
 
+// FIX THIS!
 var yelp = new YelpHelper({
   consumer_key: 'te2R-GbQUaayysqlFq1Mnw',
   consumer_secret: '9nKFi3_Hb_oQAzXtYfQWRvEegUg',

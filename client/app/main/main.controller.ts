@@ -19,7 +19,7 @@ class MainController {
   $onInit() {
     this.$http.get('/api/foodmood').then(response => {
       this.moods = response.data;
-      this.setFoodmood(this.moods[this.moods.length-1]);
+      this.setFoodmood(this.moods[this.moods.length - 1]);
     });
     this.currentUser = this.Auth.getCurrentUser();
     console.log(this.currentUser);
@@ -30,9 +30,9 @@ class MainController {
   }
 
   setFoodmood(mood) {
-    for (var i=0; i < this.moods.length; i++) {
-      if (this.moods[i]._id == mood._id) {
-        if (this.currentMood == this.moods[i]) {
+    for (var i = 0; i < this.moods.length; i++) {
+      if (this.moods[i]._id === mood._id) {
+        if (this.currentMood === this.moods[i]) {
           return;
         }
         this.currentMood = this.moods[i];
@@ -50,7 +50,7 @@ class MainController {
 
   getNextRestaurant() {
     var moodId = this.currentMood._id;
-    return this.$http.get('/api/foodmood/'+moodId+'/next')
+    return this.$http.get('/api/foodmood/' + moodId + '/next')
     .then(response => {
       this.currentRestaurant = response.data;
       this.currentRestaurant.image = this.getOriginalImageUrl(this.currentRestaurant.image_url);
@@ -60,7 +60,7 @@ class MainController {
 
   saveRestaurant() {
     var userId = this.currentUser._id;
-    return this.$http.post('/api/users/'+userId+'/saverestaurant',
+    return this.$http.post('/api/users/' + userId + '/saverestaurant',
        this.currentRestaurant)
     .then(response => {
       console.log(response);
@@ -68,13 +68,13 @@ class MainController {
   }
 
   getOriginalImageUrl(url) {
-    var shortened = url.substring(0, url.lastIndexOf("/") + 1);
+    var shortened = url.substring(0, url.lastIndexOf('/') + 1);
     console.log(url, shortened);
-    return shortened + 'o.jpg'
+    return shortened + 'o.jpg';
   }
 
   toggleDropdown() {
-    console.log("Dropdown expanding");
+    console.log('Dropdown expanding');
     this.dropExpanded = !this.dropExpanded;
   }
 
